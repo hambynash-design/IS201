@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riddle Generator</title>
+
+<style>
+/* Page style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Main container */
+.container {
+    background-color: white;
+    padding: 20px;
+    margin: auto;
+    width: 60%;
+    border-radius: 10px;
+}
+
+/* Title */
+h1 {
+    color: #003366;
+}
+
+/* Riddle text */
+#riddle {
+    font-size: 20px;
+    margin: 20px 0;
+    color: #333;
+}
+
+/* Answer text */
+#answer {
+    font-size: 18px;
+    color: #555;
+    display: none;
+}
+
+/* Buttons */
+button {
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0055a5;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #003366;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🧩 Riddle Generator</h1>
+
+    <div id="riddle">Click "New Riddle" to start!</div>
+    <div id="answer"></div>
+
+    <button onclick="newRiddle()">New Riddle</button>
+    <button onclick="showAnswer()">Show Answer</button>
+</div>
+
+<script>
+const riddles = [
+    {
+        question: "What has to be broken before you can use it?",
+        answer: "An egg"
+    },
+    {
+        question: "I’m tall when I’m young, and short when I’m old. What am I?",
+        answer: "A candle"
+    },
+    {
+        question: "What month of the year has 28 days?",
+        answer: "All of them"
+    },
+    {
+        question: "What is full of holes but still holds water?",
+        answer: "A sponge"
+    },
+    {
+        question: "What question can you never answer yes to?",
+        answer: "Are you asleep yet?"
+    }
+];
+
+let currentRiddle = null;
+
+function newRiddle() {
+    const randomIndex = Math.floor(Math.random() * riddles.length);
+    currentRiddle = riddles[randomIndex];
+
+    document.getElementById("riddle").innerText = currentRiddle.question;
+    document.getElementById("answer").style.display = "none";
+}
+
+function showAnswer() {
+    if (currentRiddle) {
+        const answerDiv = document.getElementById("answer");
+        answerDiv.innerText = "Answer: " + currentRiddle.answer;
+        answerDiv.style.display = "block";
+    } else {
+        alert("Click 'New Riddle' first!");
+    }
+}
+</script>
+
+</body>
+</html>
